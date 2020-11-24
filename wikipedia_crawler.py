@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 
 WIKIPEDIA_DOMAIN_NAME = 'https://en.wikipedia.org'
 WIKIPEDIA_ARTICLE_DIV_CLASS = 'mw-parser-output'
-MAX_ARTICLES_TO_SEARCH = 1000
+MAX_ARTICLES_TO_SEARCH = 1000000
 MAX_WIKI_PATH_LENGTH = 3  # including 'start' and 'goal'
 
 
@@ -48,30 +48,45 @@ def fetch_wiki_article_and_get_links(article_link):
 def printPath(path):
     print("Found Path: ", ' -> '.join(path))
 
+
 # BFS:
-
-
 def BFS(start_article: str, goal_article: str) -> bool:
+    class BFSNode:
+        def __init__(self, parent: 'BFSNode', article: str) -> 'BFSNode':
+            self.parent = parent
+            self.article = article
+
+        def __repr__(self) -> str:
+            return self.article
+
+    def getPathFromBFSNodes(tail: 'BFSNode') -> list[str]:
+        path = []
+        while tail:
+            path.append(tail.article)
+            tail = tail.parent
+        path.reverse()
+        return path
+
+    root = BFSNode(None, start_article)
     found = set()
     de = deque()
 
     # add start:
     found.add(start_article)
-    de.append(start_article)
+    de.append(root)
 
-    # dist = -1
-    while len(de) and len(found) < MAX_ARTICLES_TO_SEARCH:
-        # dist += 1
-        curr_article = de.popleft()
-        if curr_article == goal_article:
-            return True
-        # search for neighbors and add them to the deque:
-        for link in (fetch_wiki_article_and_get_links(curr_article) or []):
-            if link not in found:
+    while len(de):
+        curr_article_node = de.popleft()
+        if curr_article_node.article == goal_article:
+            return getPathFromBFSNodes(curr_article_node)
+
+        # search for 'neighbors' and add them to the deque:
+        for link in (fetch_wiki_article_and_get_links(curr_article_node.article) or []):
+            if (len(found) < MAX_ARTICLES_TO_SEARCH) and (link not in found):
                 found.add(link)
-                de.append(link)
+                de.append(BFSNode(curr_article_node, link))
 
-    return False
+    return []
 
 
 # DFS:
@@ -178,8 +193,9 @@ def main() -> None:
     if not start_article or not goal_article:
         return
 
+    print(BFS(start_article, goal_article))
     # print(DFS(start_article, goal_article))
-    print(DFS_WITH_THREADS(start_article, goal_article))
+    # print(DFS_WITH_THREADS(start_article, goal_article))
 
 
 if __name__ == "__main__":
