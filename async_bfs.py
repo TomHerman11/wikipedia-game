@@ -29,6 +29,10 @@ async def async_bfs(
     MAX_ARTICLES_TO_SEARCH: int,
     MAX_WIKI_PATH_LENGTH: int
 ) -> list[str]:
+    '''
+    Uses async calls with 'aiohttp' in order to fetch Wikipedia articles while
+    they are waiting in the 'deque' to be processed.
+    '''
 
     root = AsyncBFSNode(None, start_article, 0)
     found: set[str] = set()
@@ -41,7 +45,6 @@ async def async_bfs(
 
     while len(de):
         curr_article_node = de.popleft()
-        # print("Current article:", curr_article_node.bfsNode.article)
         if curr_article_node.bfsNode.article == goal_article:
             path = BFSNode.get_path_from_bfs_nodes(curr_article_node.bfsNode)
             break

@@ -9,7 +9,7 @@ def dfs(
     MAX_WIKI_PATH_LENGTH: int
 ) -> list[str]:
 
-    def DFS_helper(curr_article: str, goal_article: str, path: list[str], found: set[str]) -> list[str]:
+    def DFS_helper(curr_article: str, goal_article: str, path: list[str]) -> list[str]:
         if (curr_article in found) or (len(found) >= MAX_ARTICLES_TO_SEARCH):
             return []
 
@@ -21,7 +21,7 @@ def dfs(
 
         if len(path) < MAX_WIKI_PATH_LENGTH:
             for link in fetch_wiki_article_and_get_neighboring_articles(curr_article):
-                curr_try = DFS_helper(link, goal_article, path, found)
+                curr_try = DFS_helper(link, goal_article, path)
                 if curr_try:
                     return curr_try
 
@@ -29,4 +29,4 @@ def dfs(
         return []
 
     found: set[str] = set()
-    return DFS_helper(start_article, goal_article, [], found)
+    return DFS_helper(start_article, goal_article, [])
