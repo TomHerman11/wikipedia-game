@@ -11,7 +11,7 @@ def printPath(path: list[str]) -> None:
 
 
 async def main() -> None:
-    MAX_ARTICLES_TO_SEARCH = 5000
+    MAX_ARTICLES_TO_SEARCH = 1000000
     MAX_WIKI_PATH_LENGTH = 3  # including 'start' and 'goal'
 
     # receive (and edit if needed) the start and goal articles

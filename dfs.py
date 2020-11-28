@@ -10,7 +10,7 @@ def dfs(
 ) -> list[str]:
 
     def DFS_helper(curr_article: str, goal_article: str, path: list[str]) -> list[str]:
-        if (curr_article in found) or (len(found) >= MAX_ARTICLES_TO_SEARCH):
+        if curr_article in found:
             return []
 
         found.add(curr_article)

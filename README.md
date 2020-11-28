@@ -1,13 +1,17 @@
 # wikipedia-game
 How fast can you navigate from a 'start' article to a 'goal' article in Wikipedia?  
-Given a 'start' article, you can only advance by clikcing on the links to other Wikipedia articles, within the article itself.
+Given a 'start' article, you can only advance by clicking on the links to other Wikipedia articles, within the article itself.
 
 ### Example
-starting from the [Python (programming language) Wikipedia article](https://en.wikipedia.org/wiki/Python_(programming_language)), navigate to the [Afterlife Wikipedia article](https://en.wikipedia.org/wiki/Afterlife).
+starting from the [Python (programming language) Wikipedia article](https://en.wikipedia.org/wiki/Python_(programming_language)), navigate to the [Carl Friedrich Gauss Wikipedia article](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss).
 
 
-One possible answer:
-[Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Complex number](https://en.wikipedia.org/wiki/Complex_number) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss) -> [Afterlife](https://en.wikipedia.org/wiki/Afterlife).
+Few possible answers:
+- [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Factorial](https://en.wikipedia.org/wiki/Factorial) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
+- [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Complex number](https://en.wikipedia.org/wiki/Complex_number) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
+- [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Number Theory](https://en.wikipedia.org/wiki/Number_theory) -> [Mathematics](https://en.wikipedia.org/wiki/Mathematics) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
+
+### Demo (using DFS)
 
 
 ## This Project
