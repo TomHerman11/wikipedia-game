@@ -11,9 +11,6 @@ Few possible answers:
 - [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Complex number](https://en.wikipedia.org/wiki/Complex_number) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
 - [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Number Theory](https://en.wikipedia.org/wiki/Number_theory) -> [Mathematics](https://en.wikipedia.org/wiki/Mathematics) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
 
-### Demo (using DFS)
-
-
 ## This Project
 Given a 'start' and 'goal' articles provided by the user, the code in this project uses the [BFS](https://en.wikipedia.org/wiki/Breadth-first_search) or the [DFS](https://en.wikipedia.org/wiki/Depth-first_search) algorithms in order to find a solution path from the 'start' to the 'goal' articles, following the insrtucations above.
 
