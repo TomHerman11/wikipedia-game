@@ -1,6 +1,7 @@
 # FETCH AND PARSE HTML
 import re
-import requests
+import requests  # sync
+import aiohttp  # async
 from bs4 import BeautifulSoup
 import time
 
@@ -14,14 +15,8 @@ WIKIPEDIA_ARTICLE_PATH_PREFIX = '/wiki/'
 def fetch_wiki_article(article_title: str) -> BeautifulSoup:
     # add '_' instead of whitespaces if needed
     article_title = '_'.join(article_title.split())
-
-    start = time.time()
-    print("Fetching:", article_title)
     url = WIKIPEDIA_DOMAIN_NAME + WIKIPEDIA_ARTICLE_PATH_PREFIX + article_title
     page = requests.get(url)
-
-    print(" Fetched:", article_title, "||", "time:", time.time()-start)
-
     return BeautifulSoup(page.content, 'html.parser')
 
 
@@ -45,3 +40,19 @@ def get_neighboring_articles(article_html_model: BeautifulSoup) -> list[str]:
 
 def fetch_wiki_article_and_get_neighboring_articles(article_title: str) -> list[str]:
     return get_neighboring_articles(fetch_wiki_article(article_title))
+
+
+async def async_fetch_wiki_article(article_title: str) -> BeautifulSoup:
+    # add '_' instead of whitespaces if needed
+    article_title = '_'.join(article_title.split())
+    url = WIKIPEDIA_DOMAIN_NAME + WIKIPEDIA_ARTICLE_PATH_PREFIX + article_title
+    pageContent = ''
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            pageContent = await resp.text()
+
+    return BeautifulSoup(pageContent, 'html.parser')
+
+
+async def async_fetch_wiki_article_and_get_neighboring_articles(article_title: str) -> list[str]:
+    return get_neighboring_articles(await async_fetch_wiki_article(article_title))

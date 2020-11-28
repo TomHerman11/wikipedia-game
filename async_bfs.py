@@ -2,7 +2,7 @@ import asyncio
 from collections import deque  # for bfs
 # from queue import Queue
 from bfs import BFSNode
-from wikipedia_article_processor import fetch_wiki_article_and_get_neighboring_articles
+from wikipedia_article_processor import async_fetch_wiki_article_and_get_neighboring_articles
 
 
 class AsyncBFSNode:
@@ -15,18 +15,12 @@ class AsyncBFSNode:
         # 'fire and forget' fetching & processing neighboring articles:
         AsyncBFSNode.async_tasks.append(asyncio.create_task(self.fetch_and_process()))
 
-    # async def create_AsyncBFSNode(bfs_node_parent: 'BFSNode', article: str, distance_from_root: int) -> None:
-    #     node = AsyncBFSNode(bfs_node_parent, article, distance_from_root)
-    #     node.fetch_and_process()  # don't await.
-    #     return node
-
     async def fetch_and_process(self):
-        links = fetch_wiki_article_and_get_neighboring_articles(self.bfsNode.article)
+        links = await async_fetch_wiki_article_and_get_neighboring_articles(self.bfsNode.article)
         await self.q.put(links)
 
     async def get_neighboring_articles(self) -> list[str]:
-        a = await self.q.get()  # will block until receives value
-        return a
+        return await self.q.get()  # will block until receives value
 
 
 async def async_bfs(
@@ -68,5 +62,4 @@ async def async_bfs(
     for t in AsyncBFSNode.async_tasks:
         t.cancel()
 
-    print('len(found):', len(found))
     return path
