@@ -3,6 +3,7 @@ import time
 from bfs import bfs
 from dfs import dfs
 from async_bfs import async_bfs
+from async_dfs import async_dfs
 import asyncio
 
 
@@ -26,15 +27,19 @@ async def main() -> None:
     # )
 
     # *** DFS: ***
-    printPath(
-        dfs(start_article, goal_article, MAX_ARTICLES_TO_SEARCH, MAX_WIKI_PATH_LENGTH)
-    )
+    # printPath(
+    #     dfs(start_article, goal_article, MAX_ARTICLES_TO_SEARCH, MAX_WIKI_PATH_LENGTH)
+    # )
 
-    # *** 'ASYNC' BFS: (read function's documentation) ***
+    # *** 'ASYNC' BFS: (please read function's documentation) ***
     # printPath(
     #     await async_bfs(start_article, goal_article, MAX_ARTICLES_TO_SEARCH, MAX_WIKI_PATH_LENGTH)
     # )
 
+    # *** 'ASYNC' DFS: (please read function's documentation) ***
+    # printPath(
+    #     await async_dfs(start_article, goal_article, MAX_ARTICLES_TO_SEARCH, MAX_WIKI_PATH_LENGTH)
+    # )
 
 if __name__ == "__main__":
     asyncio.run(main())
