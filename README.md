@@ -11,6 +11,8 @@ Few possible answers:
 - [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Complex number](https://en.wikipedia.org/wiki/Complex_number) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
 - [Python (programming language)](https://en.wikipedia.org/wiki/Python_(programming_language)) -> [Number Theory](https://en.wikipedia.org/wiki/Number_theory) -> [Mathematics](https://en.wikipedia.org/wiki/Mathematics) -> [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)
 
+<img src="wikipedia-game-example.png" alt="Example Image" width="800"/>
+
 ## This Project
 Given a *start* and *goal* articles provided by the user, the code in this project uses the [BFS](https://en.wikipedia.org/wiki/Breadth-first_search) or the [DFS](https://en.wikipedia.org/wiki/Depth-first_search) algorithms in order to find a solution path from the *start* to the *goal* articles, following the insrtucations above.
 
@@ -26,9 +28,10 @@ Given a *start* and *goal* articles provided by the user, the code in this proje
 1. This project was created and testsed with **Python 3.9**.
 2. Create a Python Virtual Environment ('.venv'): `python -m venv .venv`
 3. Install requirements: `pip install -r requirements.txt -y`
-4. Uncomment from `main()` at `main.py` your preffered function to run (BFS / DFS)
-5. Run `main.py` file - in the command line execute `py main.py`
-6. The output may be empty if:
+4. Run `main.py` file - in the command line execute `py main.py`.
+5. Choose the *start* and *goal* articles.
+6. Choose which search algorithm should be used.
+7. The output may be empty if:
     1. A possible solution path does not exist.
     2. All of the possible solutions are longer than `MAX_WIKI_PATH_LENGTH`.
     3. The `MAX_ARTICLES_TO_SEARCH` bound was reached and the articles that were processed can not form a possible solution path. 
