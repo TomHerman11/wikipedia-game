@@ -26,4 +26,9 @@ def dfs(
         return []
 
     found: set[str] = set()
-    return DFS_helper(start_article, goal_article, [])
+
+    res = DFS_helper(start_article, goal_article, [])
+    if len(found) == MAX_ARTICLES_TO_SEARCH:
+        print("Reached MAX_ARTICLES_TO_SEARCH! No more articles will be processed.")
+
+    return res

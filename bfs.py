@@ -51,4 +51,7 @@ def bfs(
                 found.add(link)
                 de.append(BFSNode(curr_article_node, link, curr_article_node.distance_from_root + 1))
 
+    if len(found) == MAX_ARTICLES_TO_SEARCH:
+        print("Reached MAX_ARTICLES_TO_SEARCH! No more articles will be processed.")
+
     return []

@@ -65,4 +65,7 @@ async def async_bfs(
     for t in AsyncBFSNode.async_tasks:
         t.cancel()
 
+    if len(found) == MAX_ARTICLES_TO_SEARCH:
+        print("Reached MAX_ARTICLES_TO_SEARCH! No more articles will be processed.")
+
     return path

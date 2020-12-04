@@ -15,23 +15,6 @@ async def async_dfs(
     Once a result is found, all others recursive calls are canceled.
     '''
 
-    ########## TEMP WORKAROUND DUE TO 'aiohttp' BUG ##########
-    # See: https://github.com/aio-libs/aiohttp/issues/4324
-    from functools import wraps
-    from asyncio.proactor_events import _ProactorBasePipeTransport
-
-    def silence_event_loop_closed(func):
-        @wraps(func)
-        def wrapper(self, *args, **kwargs):
-            try:
-                return func(self, *args, **kwargs)
-            except RuntimeError as e:
-                if str(e) != 'Event loop is closed':
-                    raise
-        return wrapper
-    _ProactorBasePipeTransport.__del__ = silence_event_loop_closed(_ProactorBasePipeTransport.__del__)
-    ########## TEMP WORKAROUND DUE TO 'aiohttp' BUG ##########
-
     async def DFS_helper(curr_article: str, goal_article: str, path: list[str]) -> list[str]:
         path = path + [curr_article]
         if curr_article == goal_article:
@@ -73,5 +56,8 @@ async def async_dfs(
 
         for task in unfinished:
             task.cancel()
+
+    if len(found) == MAX_ARTICLES_TO_SEARCH:
+        print("Reached MAX_ARTICLES_TO_SEARCH! No more articles will be processed.")
 
     return dfs_result
