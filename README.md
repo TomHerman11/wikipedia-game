@@ -14,7 +14,9 @@ Few possible answers:
 <img src="wikipedia-game-example.png" alt="Example Image" width="800"/>
 
 ## This Project
-Given a *start* and *goal* articles provided by the user, the code in this project uses the [BFS](https://en.wikipedia.org/wiki/Breadth-first_search) or the [DFS](https://en.wikipedia.org/wiki/Depth-first_search) algorithms in order to find a solution path from the *start* to the *goal* articles, following the insrtucations above.
+Given a *start* and *goal* articles provided by the user, the code in this project uses the [BFS](https://en.wikipedia.org/wiki/Breadth-first_search) or the [DFS](https://en.wikipedia.org/wiki/Depth-first_search) algorithms in order to find a solution path from the *start* to the *goal* articles, following the instructions above.
+
+**The whole code is written in Python.**
 
 **Notes:**
 1. There may be more than one possible path.
