@@ -1,6 +1,7 @@
 # wikipedia-game
 How fast can you navigate from a *start* article to a *goal* article in Wikipedia?  
 Given a *start* article, you can only advance by clicking on the links to other Wikipedia articles, within the article itself.
+I used to play this game with friends during my army service a few years ago, so creating this project was pure fun 😎
 
 ### Example
 starting from the [Python (programming language) Wikipedia article](https://en.wikipedia.org/wiki/Python_(programming_language)), navigate to the [Carl Friedrich Gauss Wikipedia article](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss).
